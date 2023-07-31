@@ -1,32 +1,54 @@
-
-
-/*Body Mass Index (BMI) is a measure of health on weight. It can be 
-calculated by taking your weight in kilograms and dividing by the square of 
-your height in meters. Write a program that prompts the user to enter a 
-weight in pounds and height in inches and displays the BMI. 
-(Note: -1 pound = 0.45359237 Kg and 1 inch = 0.0254 meters)*/
-
-
-
+﻿/*The marks obtained by a student in 5 different subjects are input through 
+the keyboard. The student gets a grade as per the following rules:
+a. Percentage above or equals to 60-first grade
+b. Percentage between 50 to 59-second grade
+c. Percentage between 40 and 49-Third grade
+d. Percentage less than 40-poor Grade
+Write a program to assign the grade obtained by the student.*/
 
 using System;
-namespace BMICalculator
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
 {
-    public class L2P1
+    internal class L2P2
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            double _inchToMeter = 0.0254, _poundToKg = 0.45359237;
-            Console.Write("Enter Height (in inch) : ");
-            double height = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Enter Weight (in pound) : ");
-            double weight = Convert.ToDouble(Console.ReadLine());
-            double weightInKg = Math.Round(_poundToKg * weight, 2);
-            double heightInMeter = Math.Round(_inchToMeter * height, 2);
-            double BMI = Math.Round(weightInKg /
-            (heightInMeter * heightInMeter), 2);
-            Console.WriteLine("Weight: {0} (Kg), Height: {1} (m) ,BMI : {2}",
-            weightInKg, heightInMeter, BMI);
+            Double[] marks = new Double[5];
+            Double sum = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write("Enter marks of subject " + (i + 1) + " : ");
+                marks[i] = Convert.ToDouble(Console.ReadLine());
+                sum = sum + marks[i];
+            }
+            double avg = sum / 5;
+
+            Console.WriteLine("Percentage = {0}", avg);
+
+
+            if (avg >= 60)
+            {
+                Console.WriteLine("First Grade");
+            }
+
+            else if (avg >= 59 | avg <= 50)
+            {
+                Console.WriteLine("Second Grade");
+            }
+            else if (avg >= 49 | avg <= 40)
+            {
+                Console.WriteLine("Third Grade");
+            }
+            else
+            {
+                Console.WriteLine("Poor Grade");
+            }
         }
+
     }
 }
